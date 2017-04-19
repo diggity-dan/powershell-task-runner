@@ -1,0 +1,1 @@
+Select * from person.AddressType for xml raw

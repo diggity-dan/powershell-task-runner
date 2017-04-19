@@ -80,9 +80,9 @@ If(-not $LogFile){
 #################################################
 
 If(-not $SourceDir){
-    $SourceDir = Resolve-Path "$($MyDirectory)\..\..\output\"
-    #Log-Write -LogFile $LogFile -LineValue "SourceDir parameter has not been specified. Exiting."
-    #Exit
+    #$SourceDir = Resolve-Path "$($MyDirectory)\..\..\output\"
+    Log-Write -LogFile $LogFile -LineValue "SourceDir parameter has not been specified. Exiting."
+    Exit
 }
 
 #################################################
@@ -90,9 +90,9 @@ If(-not $SourceDir){
 #################################################
 
 If(-not $DestinationDir){
-    $DestinationDir = Resolve-Path "$($MyDirectory)\..\..\destination\"
-    #Log-Write -LogFile $LogFile -LineValue "DestinationDir parameter has not been specified. Exiting."
-    #Exit
+    #$DestinationDir = Resolve-Path "$($MyDirectory)\..\..\destination\"
+    Log-Write -LogFile $LogFile -LineValue "DestinationDir parameter has not been specified. Exiting."
+    Exit
 }
 
 #################################################
@@ -123,7 +123,8 @@ If($FileCount -gt 0){
             $TargetDir = $File.DirectoryName.Replace($SourceDir, $DestinationDir)
             $Target = $File.FullName.Replace($SourceDir, $DestinationDir)
             
-            Log-Write -LogFile $LogFile -LineValue "Moving file: $($File.FullName) | To: $($Target)"
+            Log-Write -LogFile $LogFile -LineValue "Moving file: $($File.FullName)"
+            Log-Write -LogFile $LogFile -LineValue "To: $($Target)"
             
             #Create target directory if it doesn't exist:
             If(-not (Test-Path -Path $TargetDir) ) {
